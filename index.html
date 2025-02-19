@@ -74,6 +74,7 @@
         <div>
             <h1>Esra Al-Abduljabar</h1>
             <p>@esra_123</p>
+            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
         </div>
     </div>
 
@@ -87,3 +88,19 @@
     </div>
 </body>
 </html>
+
+<script>
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            const profilePic = document.getElementById('profile-pic');
+            profilePic.src = reader.result; // Set the new image as the profile picture
+        };
+
+        if (file) {
+            reader.readAsDataURL(file); // Read the image as a data URL
+        }
+    }
+</script>
