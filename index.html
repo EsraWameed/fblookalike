@@ -69,14 +69,14 @@
         <h1>Esra Al-Abduljabar</h1>
     </div>
 
-    <div class="profile-header">
-        <img src="https://via.placeholder.com/120" alt="Profile Picture">
-        <div>
-            <h1>Esra Al-Abduljabar</h1>
-            <p>@esra_123</p>
-            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
-        </div>
+<div class="profile-header">
+    <img id="profile-pic" src="https://via.placeholder.com/120" alt="Profile Picture">
+    <div>
+        <h1>Esra Al-Abduljabar</h1>
+        <p>@esra_123</p>
+        <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
     </div>
+</div>
 
     <div class="bio">
         <h2>About Me</h2>
@@ -91,16 +91,16 @@
 
 <script>
     function previewImage(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+        const file = event.target.files[0]; // Get the selected file
+        const reader = new FileReader(); // Create a new FileReader
 
-        reader.onload = function() {
-            const profilePic = document.getElementById('profile-pic');
-            profilePic.src = reader.result; // Set the new image as the profile picture
+        reader.onload = function(e) {
+            const profilePic = document.getElementById('profile-pic'); // Reference to the img tag
+            profilePic.src = e.target.result; // Update the src of the image to the selected file's data URL
         };
 
         if (file) {
-            reader.readAsDataURL(file); // Read the image as a data URL
+            reader.readAsDataURL(file); // Read the file as a Data URL (base64 encoded)
         }
     }
 </script>
